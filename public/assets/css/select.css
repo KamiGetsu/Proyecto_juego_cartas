@@ -1,0 +1,240 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to bottom, #0a0f1a, #141e30);
+  color: rgb(252, 252, 252);
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor principal */
+#main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  gap: 20px;
+}
+
+/* Nombres de los jugadores (cambiar a blanco) */
+#player1-name, #player2-name {
+  font-size: 1.2rem; /* Tamaño reducido */
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #ffffff; /* Cambiado a blanco */
+}
+
+/* Contenedores de personajes */
+.character-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Espacio reducido entre tarjetas */
+  justify-content: center;
+  padding: 15px; /* Padding reducido */
+  background-color: rgb(68, 89, 122);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Cartas de personajes */
+.personaje-card {
+  width: 130px; /* Ancho ligeramente mayor */
+  height: 180px; /* Altura ligeramente mayor */
+  background-color: #ecf0f1;
+  border: 1px solid #bdc3c7; /* Borde más fino */
+  border-radius: 8px; /* Bordes ligeramente más suaves */
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.personaje-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.personaje-card.selected {
+  border-color: #2ecc71;
+  box-shadow: 0 0 8px #2ecc71;
+}
+
+.card-body {
+  padding: 10px; /* Padding ligeramente mayor */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.card-title {
+  font-size: 0.9rem; /* Tamaño de fuente ligeramente mayor */
+  font-weight: bold;
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; /* Evitar que el texto se desborde */
+}
+
+.card-body ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card-body ul li {
+  font-size: 0.7rem; /* Tamaño de fuente ligeramente mayor */
+  margin-bottom: 2px; /* Espaciado reducido */
+  color: #555;
+}
+
+/* Imágenes dentro de las tarjetas (si existen) */
+.personaje-card img {
+  width: 100%; /* La imagen ocupa todo el ancho de la tarjeta */
+  height: 70px; /* Altura ajustada para el nuevo tamaño */
+  object-fit: cover; /* Ajustar la imagen dentro del espacio disponible */
+  border-radius: 6px 6px 0 0; /* Bordes redondeados solo en la parte superior */
+}
+
+/* Botón de selección */
+.select-btn {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 8px; /* Padding reducido */
+  font-size: 0.9rem; /* Tamaño de fuente reducido */
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.select-btn:hover {
+  background-color: #2980b9;
+}
+
+/* Modal de selección de usuarios */
+#user-selection-modal {
+
+  top: 0;
+  left: 5;
+  right: 25%;
+  background: linear-gradient(to bottom, #0a0f1a, #141e30);
+  color: rgb(5, 1, 8);
+
+}
+
+.modal-content {
+  background: linear-gradient(to bottom,  #141e30, #1d1c1c); /* Degradado suave */
+  padding: 20px; 
+  
+  box-shadow: 0 8px 15px rgba(6, 51, 109, 0.2); /* Sombra más pronunciada */
+  text-align: center;
+}
+
+.modal-title{
+  color: #eff3f5;
+}
+
+/* Texto "Seleccionar usuario" (cambiar a blanco) */
+.modal-content h2 {
+  color: #f0e7e7; 
+  margin-bottom: 15px;
+}
+
+.modal-footer{
+  color: #141e30;
+}
+
+.modal-content select {
+  width: 100%;
+  padding: 10px; /* Padding aumentado */
+  margin-bottom: 15px; /* Espaciado inferior aumentado */
+  border: 1px solid #070707;
+  border-radius: 8px; /* Bordes más redondeados */
+  font-size: 0.9rem; /* Tamaño de fuente ajustado */
+}
+
+.modal-content button {
+  background: linear-gradient(to right, #3498db, #2980b9); /* Degradado en el botón */
+  color: #fff;
+  border: none;
+  padding: 10px 20px; /* Padding ajustado */
+  font-size: 1rem; /* Tamaño de fuente ajustado */
+  font-weight: bold;
+  border-radius: 8px; /* Bordes más redondeados */
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.modal-content button:hover {
+  transform: scale(1.05); /* Efecto de agrandamiento al pasar el ratón */
+}
+
+.modal-content button:disabled {
+  background: linear-gradient(to right, #0c3c5c, #127279); /* Degradado deshabilitado */
+  cursor: not-allowed;
+}
+
+/* Botón de confirmación */
+#confirm-selection {
+  background: linear-gradient(to right, #092f61, #082857); /* Degradado en el botón */
+  color: #fff;
+  border: none;
+  padding: 10px 20px; /* Padding reducido */
+  font-size: 1rem; /* Tamaño de fuente reducido */
+  font-weight: bold;
+  border-radius: 8px; /* Bordes más redondeados */
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+#confirm-selection:hover {
+  transform: scale(1.05); /* Efecto de agrandamiento al pasar el ratón */
+}
+
+#confirm-selection:disabled {
+  background: linear-gradient(to right, #bdc3c7, #0a4364); /* Degradado deshabilitado */
+  cursor: not-allowed;
+}
+
+/* Estilo para el símbolo único */
+.unique-symbol {
+  font-size: 1.6rem; /* Tamaño ligeramente mayor para el ícono */
+  color: #2980b9; /* Color azul vibrante */
+}
+
+.unique-symbol i {
+  transition: transform 0.3s ease; /* Animación al pasar el ratón */
+}
+
+/* Agrandar el ícono al pasar el ratón */
+.unique-symbol i:hover {
+  transform: scale(1.2); 
+}
+/* Estilo para las cartas seleccionadas */
+.personaje-card.selected {
+  border-color: #2ecc71; /* Borde verde para indicar selección */
+  box-shadow: 0 0 8px #2ecc71; /* Sombra verde */
+}
+
+/* Cambiar el color del botón "Seleccionar" en las cartas seleccionadas */
+.personaje-card.selected .select-btn {
+  background-color: #2ecc71; /* Botón verde */
+  border-color: #2ecc71;
+}
+
+/* Cambiar el color del texto en las cartas seleccionadas */
+.personaje-card.selected .card-title {
+  color: #2ecc71; /* Título verde */
+}
+
+/* Cambiar el color del fondo de la carta seleccionada */
+.personaje-card.selected .front {
+  background-color: #d4f8d4; /* Fondo claro con tono verde */
+}

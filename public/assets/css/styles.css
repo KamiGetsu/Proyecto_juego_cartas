@@ -1,0 +1,139 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(to bottom, #0a0f1a, #141e30);
+    color: rgb(5, 1, 8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h1, h2, h3 {
+    color: #f0e6e6;
+    text-align: center;
+}
+
+a {
+    color: #07223f;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+a{
+    text-decoration: underline;
+}
+
+/* Estilos para la carta de autenticación */
+.auth-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.auth-card {
+    background-color: rgb(0, 16, 102);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.form-group {
+    color: #f0e6e6;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #050505;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.btn-primary {
+    background-color: #0c2e52;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #1b3958;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #000000;
+}
+
+/* Estilos para las tablas (para otras vistas) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #051a30;
+    color: white;
+}
+/* autth */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #0a0f1a, #141e30);
+    color: rgb(5, 1, 8);
+}
+.auth-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    background: linear-gradient(to bottom, #0c0c0c, #141e30);
+    color: rgb(5, 1, 8);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.form-group {
+    margin-bottom: 1.5rem;
+}
+.toggle-form-btn {
+    width: 100%;
+    margin-top: 1rem;
+}
+.character-container{
+    color: #ffff;
+}
+
+
+

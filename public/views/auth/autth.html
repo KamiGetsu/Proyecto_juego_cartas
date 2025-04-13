@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro e Inicio de Sesión</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+
+<div class="auth-container">
+    <div class="auth-card">
+        <!-- Mensaje de error -->
+        <div id="mensaje-error" class="alert alert-danger text-center" role="alert" style="display: none;"></div>
+
+        <h2 id="form-title" class="text-center mb-4">Registrarse</h2>
+
+        <!-- Formulario de Registro -->
+        <form id="register-form" action="http://127.0.0.1:3000/register" method="post" class="needs-validation" novalidate>
+            <div class="form-group">
+                <label for="nombre_usuario_reg" class="form-label">Nombre de Usuario:</label>
+                <input type="text" name="nombre_usuario" id="nombre_usuario_reg" class="form-control" required>
+                <div class="invalid-feedback">Por favor, ingresa un nombre de usuario.</div>
+            </div>
+            <div class="form-group">
+                <label for="contrasena_reg" class="form-label">Contraseña:</label>
+                <input type="password" name="contrasena" id="contrasena_reg" class="form-control" required>
+                <div class="invalid-feedback">Por favor, ingresa una contraseña.</div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+        </form>
+
+        <!-- Formulario de Login (oculto inicialmente) -->
+        <form id="login-form" action="http://127.0.0.1:3000/login" method="post" style="display: none;" class="needs-validation" novalidate>
+            <div class="form-group">
+                <label for="nombre_usuario_login" class="form-label">Nombre de Usuario:</label>
+                <input type="text" name="nombre_usuario" id="nombre_usuario_login" class="form-control" required>
+                <div class="invalid-feedback">Por favor, ingresa un nombre de usuario.</div>
+            </div>
+            <div class="form-group">
+                <label for="contrasena_login" class="form-label">Contraseña:</label>
+                <input type="password" name="contrasena" id="contrasena_login" class="form-control" required>
+                <div class="invalid-feedback">Por favor, ingresa una contraseña.</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+        </form>
+        
+
+        <!-- Botón para alternar entre formularios -->
+        <button id="toggle-form-btn" class="btn btn-secondary toggle-form-btn">¿Ya tienes cuenta? Inicia Sesión</button>
+    </div>
+</div>
+
+<!-- Bootstrap JS y Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const registerForm = document.getElementById('register-form');
+    const loginForm = document.getElementById('login-form');
+    const toggleFormBtn = document.getElementById('toggle-form-btn');
+    const formTitle = document.getElementById('form-title');
+    const mensajeError = document.getElementById('mensaje-error');
+
+    // Mostrar u ocultar el mensaje de error según el parámetro 'error' en la URL
+    window.onload = () => {
+        const params = new URLSearchParams(window.location.search);
+        const error = params.get('error');
+
+        if (error) {
+            mensajeError.textContent = decodeURIComponent(error); // Decodificar el mensaje de error
+            mensajeError.style.display = 'block'; // Mostrar el mensaje
+        } else {
+            mensajeError.style.display = 'none'; // Ocultar el mensaje si no hay error
+        }
+    };
+
+    // Alternar entre formularios
+    toggleFormBtn.addEventListener('click', () => {
+        if (registerForm.style.display === 'none') {
+            // Mostrar formulario de registro
+            registerForm.style.display = 'block';
+            loginForm.style.display = 'none';
+            formTitle.textContent = 'Registrarse';
+            toggleFormBtn.textContent = '¿Ya tienes cuenta? Inicia Sesión';
+        } else {
+            // Mostrar formulario de login
+            registerForm.style.display = 'none';
+            loginForm.style.display = 'block';
+            formTitle.textContent = 'Iniciar Sesión';
+            toggleFormBtn.textContent = '¿No tienes cuenta? Regístrate';
+        }
+    });
+
+    // Validación de Bootstrap
+    (function () {
+        'use strict';
+        var forms = document.querySelectorAll('.needs-validation');
+        Array.prototype.slice.call(forms).forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    })();
+</script>
+
+</body>
+</html>
